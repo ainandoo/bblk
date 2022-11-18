@@ -1,5 +1,6 @@
 <?php
     // Inheritance, pewarisan pada Class
+    // gunakan "final" pada class dan method untuk mencegah inheritance dan overriding
     class Buah {
         public $nama;
         public $warna;
@@ -7,7 +8,7 @@
             $this -> nama = $nama;
             $this -> warna = $warna;
         }
-        // coba public dan protected, pahami bedanya
+        // coba "public" dan "protected" keyword, pahami bedanya
         public function cetak_pesan(){
             echo "cetak pesan dari Buah: Ini adalah buah {$this->nama} dan warnanya {$this->warna} <br>";
         }
@@ -19,13 +20,14 @@
             $this->warna = $warna;
             $this->berat = $berat;
         }
+        // ini method overriding
         public function cetak_pesan(){
             echo "Cetak pesan dari Berry: Ini adalah buah {$this->nama} dan warnanya {$this->warna} 
             serta beratnya {$this->berat} gram <br>";
         }
         public function pesan(){
             echo "Pesan: Ini adalah buah jenis Berry <br>";
-            // mengakses protected method
+            // cara mengakses protected method
             // $this -> cetak_pesan();
         }
     }
