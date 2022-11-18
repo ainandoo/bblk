@@ -1,40 +1,53 @@
 <?php
-    // Inheritance, pewarisan pada Class
-    // gunakan "final" pada class dan method untuk mencegah inheritance dan overriding
-    class Buah {
+    abstract class Mobil {
         public $nama;
-        public $warna;
-        public function __construct($nama, $warna){
+        public function __construct($nama) {
             $this -> nama = $nama;
-            $this -> warna = $warna;
         }
-        // coba "public" dan "protected" keyword, pahami bedanya
-        public function cetak_pesan(){
-            echo "cetak pesan dari Buah: Ini adalah buah {$this->nama} dan warnanya {$this->warna} <br>";
+        // minimal ada satu method abstrak
+        abstract public function deskripsi() : string;
+    }
+    
+    class Honda extends Mobil {
+        public function deskripsi(): string {
+            return " Ini adalah mobil {$this->nama}";
         }
     }
-    class Berry extends Buah {
-        public $berat;
-        public function __construct($nama, $warna, $berat){
-            $this->nama = $nama;
-            $this->warna = $warna;
-            $this->berat = $berat;
-        }
-        // ini method overriding
-        public function cetak_pesan(){
-            echo "Cetak pesan dari Berry: Ini adalah buah {$this->nama} dan warnanya {$this->warna} 
-            serta beratnya {$this->berat} gram <br>";
-        }
-        public function pesan(){
-            echo "Pesan: Ini adalah buah jenis Berry <br>";
-            // cara mengakses protected method
-            // $this -> cetak_pesan();
+    class Toyota extends Mobil {
+        public function deskripsi(): string {
+            return " Ini adalah mobil {$this->nama}";
         }
     }
 
-    $blueberry = new Berry("Blueberry", "Biru", 50);
-    $blueberry -> pesan();
-    $blueberry -> cetak_pesan();
-    $strawberry = new Buah("Strawberry", "Merah");
-    $strawberry -> cetak_pesan();
+    $honda1 = new Honda("Honda Jazz");
+    echo $honda1 -> deskripsi() . "<br>";
+
+    $toyota1 = new Toyota("Toyota Avanza");
+    echo $toyota1 -> deskripsi() . "<br>";
+
+    // Contoh lain kelas Abstrak
+
+    abstract class Induk {
+        // method abstrak dengan parameter
+        abstract protected function namaDepan($nama);
+    }
+
+    class Anak extends Induk {
+        public function namaDepan($nama){
+            if ($nama == "Joko") {
+                $namadepan = "Pak ";
+            } elseif ($nama == "Jeny") {
+                $namadepan = "Ibu ";
+            } else {
+                $namadepan = "";
+            }
+            
+            return "{$namadepan} {$nama}";
+        }
+    }
+
+    $objek1 = new Anak();
+    echo $objek1 -> namaDepan("Joko");
+    echo "<br>";
+    echo $objek1 -> namaDepan("Jeny");
 ?>
