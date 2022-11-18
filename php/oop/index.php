@@ -3,7 +3,6 @@
     class Buah {
         public $nama;
         public $warna;
-
         public function __construct($nama, $warna){
             $this -> nama = $nama;
             $this -> warna = $warna;
@@ -35,4 +34,5 @@
     $blueberry -> pesan();
     $blueberry -> cetak_pesan();
     $strawberry = new Buah("Strawberry", "Merah");
+    $strawberry -> cetak_pesan();
 ?>
