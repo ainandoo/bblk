@@ -1,0 +1,23 @@
+header {
+    background-color: blue;
+    height: 100px;
+    color: white;
+}
+.logo-kiri{
+    background-color: aqua;
+    height: 100px;
+    width: 20%;
+    float: left;
+}
+.kop-surat{
+    background-color: burlywood;
+    height: 100px;
+    width: 60%;
+    float: left;
+}
+.logo-kanan{
+    background-color: aqua;
+    height: 100px;
+    width: 20%;
+    float: right;
+}

@@ -1,0 +1,11 @@
+div {
+    background-color: magenta;
+    height: 200px;
+    width: 200px;
+}
+p {
+    padding: 10px 0px 0px 10px;
+    border: ;
+    border-bottom: 2px dashed black;
+    margin: 0px 0px 0px 0px;
+}
