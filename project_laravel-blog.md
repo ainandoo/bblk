@@ -10,13 +10,13 @@
 
 2. Buat database kosong di PHPMyAdmin atau aplikasi database client yang digunakan
 
-3. Edit file .env, isi konfigurasi DB_DATABASE dengan nama database
+3. Edit file .env, isi konfigurasi DB_DATABASE dengan nama database dan setup database server
 
 4. Buat model Post,
 
     $ php artisan make:model Post -m
 
-5. Isi method *up* seperti ini di file _migration_ yang tergenerate:
+5. Isi method *up* seperti ini di file _migration_ yang ter-generate:
 
 ```
 public function up()
@@ -31,7 +31,7 @@ public function up()
 }
 ```
 
-6. Di dalam class Post, tambahkan kode berikut
+6. Di dalam class Post (Model), tambahkan kode berikut
 
 ```
 protected $fillable = [
@@ -67,4 +67,17 @@ public function index() {
 use App\Models\Post;
 ```
 
-11. 
+11. Tambahkan route untuk web,
+```
+Route::resource('/posts', \App\Http\Controllers\PostController::class);
+```
+
+12. Periksa route yang sudah di buat di terminal/command line
+
+    $ php artisan route:list
+
+13. Buat folder dengan nama "posts" di dalam folder view, di dalamnya, buat view dengan nama index.blade.php
+
+14. Salin isi view index dari sini: 
+
+- https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/index.blade.php
