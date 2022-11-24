@@ -85,4 +85,116 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 15. Cek tampilannya di alamat: http://localhost:8000/posts
 
 16. Tambah method _create_ di dalam PostController
+```
+public function create() {
+    return view('posts.create');
+}
+```
+17. Tambah method _store di dalam PostController
+```
+public function store(Request $request) {
+        // validasi form
+        $this->validate($request, [
+            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title'     => 'required|min:5',
+            'content'   => 'required|min:10'
+        ]);
+
+        // upload gambar
+        $image = $request->file('image');
+        $image->storeAs('public/posts', $image->hashName());
+
+        // mengisi record ke dalam tabel post
+        Post::create([
+            'image'     => $image->hashName(),
+            'title'     => $request->title,
+            'content'   => $request->content
+        ]);
+
+        // redirect ke index
+        return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+```
+18. Buat view dengan nama "create" di dalam folder posts, salin isi view dari sini
+- https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/create.blade.php
+
+19. Cek tampilannya di alamat: http://localhost:8000/posts/create
+
+20. Tambah method _show_ di dalam PostController
+```
+    public function show($id) {
+        // get post by ID
+        $post = Post::find($id);
+
+        // return view
+        return view('posts.show', compact('post'));
+    }
+```
+
+21. Buat view dengan nama "show" di dalam folder posts, salin isi view dari sini
+- https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/show.blade.php
+
+22. Tambah method _edit_ di dalam PostCOntroller
+```
+    public function edit(Post $post) {
+        return view('posts.edit', compact('post'));
+    }
+```
+23. Tambah method _update_ di dalam PostController
+```
+public function update(Request $request, Post $post)
+    {
+        //validate form
+        $this->validate($request, [
+            'image'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title'     => 'required|min:5',
+            'content'   => 'required|min:10'
+        ]);
+
+        //check if image is uploaded
+        if ($request->hasFile('image')) {
+
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/posts', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/posts/'.$post->image);
+
+            //update post with new image
+            $post->update([
+                'image'     => $image->hashName(),
+                'title'     => $request->title,
+                'content'   => $request->content
+            ]);
+
+        } else {
+
+            //update post without image
+            $post->update([
+                'title'     => $request->title,
+                'content'   => $request->content
+            ]);
+        }
+
+        //redirect to index
+        return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Diubah!']);
+    }
+```
+24. Buat view dengan nama "edit" di dalam folder posts, salin isi view dari sini
+- https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/edit.blade.php
+
+25. Tambahkan method _destroy_ pada PostController
+```
+    public function destroy(Post $post) {
+        // delete image
+        Storage::delete('public/posts/'. $post->image);
+
+        // delete post
+        $post->delete();
+
+        // redirect to index
+        return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+```
 
