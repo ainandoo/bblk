@@ -16,7 +16,7 @@
 
     $ php artisan make:model Post -m
 
-5. Isi method *up* seperti ini:
+5. Isi method *up* seperti ini di file _migration_ yang tergenerate:
 
 ```
 public function up()
