@@ -81,3 +81,8 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 14. Salin isi view index dari sini: 
 
 - https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/index.blade.php
+
+15. Cek tampilannya di alamat: http://localhost:8000/posts
+
+16. Tambah method _create_ di dalam PostController
+
