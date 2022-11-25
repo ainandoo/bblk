@@ -23,6 +23,10 @@ $router -> get('/key', function(){
     return Str::random(32);
 });
 
+// default alamat: http://localhost:8000/
+// alamat dengan kata depan: http://localhost:8000/api/
+// alamat yang bisa di akses: http://localhost:8000/api/todo
+
 $router -> group(['prefix' => 'api'], function() use ($router) {
 
 $router -> post('todo', 'TodoController@store');

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\{Request, JsonResponse};
 use App\Models\Todo;
 
@@ -12,14 +11,16 @@ class TodoController extends Controller {
         $this -> todo = $todo;
     }
 
+    // method untuk menyimpan data
     public function store(Request $request): JsonResponse {
+        // validasi data inputan
         $data = $this -> validate($request, [
             'name' => 'required|max:100',
             'description' => 'nullable'
         ]);
-
         try {
-            $todo = $this ->todo -> create($data);
+            $todo = $this -> todo -> create($data);
+
             return response() -> json([
                 'status' => true,
                 'message' => 'Data todo berhasil disimpan!',
@@ -33,6 +34,25 @@ class TodoController extends Controller {
         }
     }
 
+    // method untuk menampilkan semua todo list
+    public function index(): JsonResponse {
+        $todos = $this -> todo -> all();
+        return response() -> json(
+            ['data' => $todos],
+            200
+        );
+    }
 
-    
+    // method untuk mengambil todo berdasarkan id
+    public function show(int $id): JsonResponse {
+        $todo = $this -> todo -> findOrFail($id);
+        return response() -> json(['data' => $todo], 200);
+    }
+
+
+
+
+
+
+
 }
