@@ -17,7 +17,6 @@
     $ php artisan make:model Post -m
 
 5. Isi method *up* seperti ini di file _migration_ yang ter-generate:
-
 ```
 public function up()
 {
@@ -30,9 +29,7 @@ public function up()
   });
 }
 ```
-
 6. Di dalam class Post (Model), tambahkan kode berikut
-
 ```
 protected $fillable = [
     'image',
@@ -40,7 +37,6 @@ protected $fillable = [
     'content',
 ];
 ```
-
 7. Jalankan migration
 
     $ php artisan migrate
@@ -50,7 +46,6 @@ protected $fillable = [
     $ php artisan make:controller PostController
 
 9. Tulis kode ini di dalam class PostController
-
 ```
 public function index() {
     //get posts
@@ -60,18 +55,14 @@ public function index() {
     return view('posts.index', compact('posts'));
 }
 ```
-
 10. Jangan lupa impor kelas post,
-
 ```
 use App\Models\Post;
 ```
-
 11. Tambahkan route untuk web,
 ```
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 ```
-
 12. Periksa route yang sudah di buat di terminal/command line
 
     $ php artisan route:list
@@ -90,7 +81,7 @@ public function create() {
     return view('posts.create');
 }
 ```
-17. Tambah method _store di dalam PostController
+17. Tambah method _store_ di dalam PostController
 ```
 public function store(Request $request) {
         // validasi form
