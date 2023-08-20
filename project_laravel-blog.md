@@ -17,7 +17,7 @@
     $ php artisan make:model Post -m
 
 5. Isi method *up* seperti ini di file _migration_ yang ter-generate:
-```
+```php
 public function up()
 {
   Schema::create('posts', function (Blueprint $table) {
