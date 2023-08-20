@@ -30,7 +30,7 @@ public function up()
 }
 ```
 6. Di dalam class Post (Model), tambahkan kode berikut
-```
+```php
 protected $fillable = [
     'image',
     'title',
@@ -46,7 +46,7 @@ protected $fillable = [
     $ php artisan make:controller PostController
 
 9. Tulis kode ini di dalam class PostController
-```
+```php
 public function index() {
     //get posts
     $posts = Post::latest()->paginate(5);
@@ -56,11 +56,11 @@ public function index() {
 }
 ```
 10. Jangan lupa impor kelas post,
-```
+```php
 use App\Models\Post;
 ```
 11. Tambahkan route untuk web,
-```
+```php
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 ```
 12. Periksa route yang sudah di buat di terminal/command line
@@ -76,13 +76,13 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 15. Cek tampilannya di alamat: http://localhost:8000/posts
 
 16. Tambah method _create_ di dalam PostController
-```
+```php
 public function create() {
     return view('posts.create');
 }
 ```
 17. Tambah method _store_ di dalam PostController
-```
+```php
 public function store(Request $request) {
         // validasi form
         $this->validate($request, [
@@ -112,7 +112,7 @@ public function store(Request $request) {
 19. Cek tampilannya di alamat: http://localhost:8000/posts/create
 
 20. Tambah method _show_ di dalam PostController
-```
+```php
     public function show($id) {
         // get post by ID
         $post = Post::find($id);
@@ -126,13 +126,13 @@ public function store(Request $request) {
 - https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/show.blade.php
 
 22. Tambah method _edit_ di dalam PostCOntroller
-```
+```php
     public function edit(Post $post) {
         return view('posts.edit', compact('post'));
     }
 ```
 23. Tambah method _update_ di dalam PostController
-```
+```php
 public function update(Request $request, Post $post)
     {
         //validate form
@@ -176,7 +176,7 @@ public function update(Request $request, Post $post)
 - https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/edit.blade.php
 
 25. Tambahkan method _destroy_ pada PostController
-```
+```php
     public function destroy(Post $post) {
         // delete image
         Storage::delete('public/posts/'. $post->image);
