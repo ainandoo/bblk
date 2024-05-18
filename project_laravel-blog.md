@@ -130,7 +130,7 @@ public function store(Request $request) {
 21. Buat view dengan nama "show" di dalam folder posts, salin isi view dari sini
 - https://github.com/ainandoo/bblk/blob/master/laravel/laravel-blog/resources/views/posts/show.blade.php
 
-22. Tambah method _edit_ di dalam PostCOntroller
+22. Tambah method _edit_ di dalam PostController
 ```php
     public function edit(Post $post) {
         return view('posts.edit', compact('post'));
