@@ -40,7 +40,7 @@ protected $fillable = [
 ```
 7. Jalankan migration
 ```console
-$ php artisan migrate
+php artisan migrate
 ```
 8. Buat controller untuk post
 ```
