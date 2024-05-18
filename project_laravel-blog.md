@@ -2,11 +2,13 @@
 
 1. Jalankan perintah berikut:
 
-    $ composer create-project laravel/laravel laravel-blog
+```console
+$ composer create-project laravel/laravel laravel-blog
 
-    $ cd laravel-blog
+$ cd laravel-blog
 
-    $ php artisan storage:link
+$ php artisan storage:link
+```
 
 2. Buat database kosong di PHPMyAdmin atau aplikasi database client yang digunakan
 
