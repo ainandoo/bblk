@@ -1,6 +1,6 @@
 ### Langkah-langkah membuat project: Laravel blog
 
-1. Jalankan perintah berikut:
+1. Jalankan perintah berikut satu per satu:
 
 ```console
 composer create-project laravel/laravel laravel-blog
@@ -13,8 +13,9 @@ php artisan storage:link
 3. Edit file .env, isi konfigurasi DB_DATABASE dengan nama database dan setup database server
 
 4. Buat model Post,
-
-    $ php artisan make:model Post -m
+```console
+php artisan make:model Post -m
+```
 
 5. Isi method *up* seperti ini di file _migration_ yang ter-generate:
 ```php
@@ -38,9 +39,9 @@ protected $fillable = [
 ];
 ```
 7. Jalankan migration
-
-    $ php artisan migrate
-
+```console
+$ php artisan migrate
+```
 8. Buat controller untuk post
 
     $ php artisan make:controller PostController
