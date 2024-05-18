@@ -4,7 +4,11 @@
 
 ```console
 composer create-project laravel/laravel laravel-blog
+```
+```console
 cd laravel-blog
+```
+```console
 php artisan storage:link
 ```
 
