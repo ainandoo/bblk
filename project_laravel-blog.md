@@ -43,9 +43,9 @@ protected $fillable = [
 $ php artisan migrate
 ```
 8. Buat controller untuk post
-
-    $ php artisan make:controller PostController
-
+```
+php artisan make:controller PostController
+```
 9. Tulis kode ini di dalam class PostController
 ```php
 public function index() {
@@ -65,9 +65,9 @@ use App\Models\Post;
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 ```
 12. Periksa route yang sudah di buat di terminal/command line
-
-    $ php artisan route:list
-
+```
+php artisan route:list
+```
 13. Buat folder dengan nama "posts" di dalam folder view, di dalamnya, buat view dengan nama index.blade.php
 
 14. Salin isi view index dari sini: 
